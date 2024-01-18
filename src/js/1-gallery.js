@@ -69,19 +69,25 @@ const images = [
   },
 ];
 
-const galleryList = document.querySelector('.gallery');
-
 const galleryItem = images
   .map(
     ({ preview, original, description }) =>
-      ` <li class="gallery-item">
-        <a class="gallery-link" href="${original}">
-          <img
-            class="gallery-image"
-            src="${preview}"
-           alt="${description}"
-          />
-        </a>
-      </li>`
+      `<li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img
+          class="gallery-image"
+          src="${preview}"
+         alt="${description}"
+        />
+      </a>
+    </li>`
   )
   .join('');
+
+const galleryList = document.querySelector('.gallery');
+galleryList.insertAdjacentHTML('afterbegin', galleryItem);
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
