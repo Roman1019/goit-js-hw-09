@@ -16,6 +16,7 @@ function onFormInput(event) {
 }
 
 function onFormSubmit(event) {
+  event.preventDefault();
   const email = event.currentTarget.elements.email.value.trim();
   const text = event.currentTarget.elements.message.value.trim();
   if (email === '' || text === '') {
@@ -24,7 +25,7 @@ function onFormSubmit(event) {
   } else {
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
     localStorage.removeItem(STORAGE_KEY);
-    event.preventDefalt();
+
     event.currentTarget.reset();
   }
 }
